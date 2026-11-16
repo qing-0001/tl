@@ -1,0 +1,19 @@
+1042:11-16 20:12:42.920526   987  1334 E RmmOemHandler: [0] OEM_HOOK_RAW not send AT+TASARCRL=0, fail
+1043:11-16 20:12:42.924959 12598 12611 E MtkTelephonyManagerEx: sendAtCmd onError Fail for slotId=0 token=1794831162916 atCmd=AT+TASARCRL=0
+1045:11-16 20:12:45.512786   987  1334 E RmmOemHandler: [0] OEM_HOOK_RAW not send AT+TASARCRL=1, fail
+1046:11-16 20:12:45.515841 12598 12611 E MtkTelephonyManagerEx: sendAtCmd onError Fail for slotId=0 token=1794831165507 atCmd=AT+TASARCRL=1
+4776:11-16 20:27:54.305866  1957  1957 D MtkRILJ : [1529]> OEM_HOOK_RAW[41542B544153415243524C3D30] [PHONE0]
+4777:11-16 20:27:54.306851   987  1271 D RpOemCtlr: onHandleOemHookRaw, data = AT+TASARCRL=0
+4778:11-16 20:27:54.307251   987  1334 E RmmOemHandler: [0] OEM_HOOK_RAW not send AT+TASARCRL=0, fail
+4780:11-16 20:27:54.308889  1957  3725 D RilRequest: [1529]< OEM_HOOK_RAW error: com.android.internal.telephony.CommandException: GENERIC_FAILURE ret=[69, 82, 82, 79, 82, 0] [convertToString] result={ when=-1h33m53s315ms what=2 obj=slotId=0 token=1794832074300 atCmd=AT+TASARCRL=0 target=com.mediatek.phone.MtkPhoneInterfaceManagerEx$MainThreadHandler }
+4781:11-16 20:27:54.311328 15150 15165 E MtkTelephonyManagerEx: sendAtCmd onError Fail for slotId=0 token=1794832074300 atCmd=AT+TASARCRL=0
+4788:11-16 20:27:56.533221  1957  1957 D MtkRILJ : [1531]> OEM_HOOK_RAW[41542B544153415243524C3D31] [PHONE0]
+4789:11-16 20:27:56.536502   987  1271 D RpOemCtlr: onHandleOemHookRaw, data = AT+TASARCRL=1
+4790:11-16 20:27:56.537093   987  1334 E RmmOemHandler: [0] OEM_HOOK_RAW not send AT+TASARCRL=1, fail
+4792:11-16 20:27:56.538242  1957  2150 D RilRequest: [1531]< OEM_HOOK_RAW error: com.android.internal.telephony.CommandException: GENERIC_FAILURE ret=[69, 82, 82, 79, 82, 0] [convertToString] result={ when=-1h33m55s545ms what=2 obj=slotId=0 token=1794832076526 atCmd=AT+TASARCRL=1 target=com.mediatek.phone.MtkPhoneInterfaceManagerEx$MainThreadHandler }
+4793:11-16 20:27:56.540014 15150 15165 E MtkTelephonyManagerEx: sendAtCmd onError Fail for slotId=0 token=1794832076526 atCmd=AT+TASARCRL=1
+4821:11-16 20:28:04.378799  1957  1957 D MtkRILJ : [1535]> OEM_HOOK_RAW[41542B544153415243524C3D30] [PHONE0]
+4822:11-16 20:28:04.379498   987  1271 D RpOemCtlr: onHandleOemHookRaw, data = AT+TASARCRL=0
+4823:11-16 20:28:04.379946   987  1334 E RmmOemHandler: [0] OEM_HOOK_RAW not send AT+TASARCRL=0, fail
+4825:11-16 20:28:04.381959  1957  3725 D RilRequest: [1535]< OEM_HOOK_RAW error: com.android.internal.telephony.CommandException: GENERIC_FAILURE ret=[69, 82, 82, 79, 82, 0] [convertToString] result={ when=-1h34m3s388ms what=2 obj=slotId=0 token=1794832084373 atCmd=AT+TASARCRL=0 target=com.mediatek.phone.MtkPhoneInterfaceManagerEx$MainThreadHandler }
+4826:11-16 20:28:04.383739 15150 15682 E MtkTelephonyManagerEx: sendAtCmd onError Fail for slotId=0 token=1794832084373 atCmd=AT+TASARCRL=0

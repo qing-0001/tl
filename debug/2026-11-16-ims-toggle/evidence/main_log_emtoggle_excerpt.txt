@@ -1,0 +1,22 @@
+1564:11-16 20:27:00.948329 15150 15277 I EmToggle: AT> AT+EIWLCFGSET="ipol_ims_md_supporting_rat","0"
+1611:11-16 20:27:00.961073 15150 15150 I EmToggle: AT< error: java.lang.Exception: Fail for slotId=0 token=1794832020948 atCmd=AT+EIWLCFGSET="ipol_ims_md_supporting_rat","0"
+14811:11-16 20:27:49.464135 15150 15685 I EmToggle: AT> AT+EIWLCFGSET="ipol_ims_md_supporting_rat","0"
+14875:11-16 20:27:49.476441 15150 15150 I EmToggle: AT< error: java.lang.Exception: Fail for slotId=0 token=1794832069464 atCmd=AT+EIWLCFGSET="ipol_ims_md_supporting_rat","0"
+16473:11-16 20:27:51.973998 15150 15687 I EmToggle: AT> AT+EIWLCFGSET="ipol_ims_md_supporting_rat","65"
+16542:11-16 20:27:51.989647 15150 15150 I EmToggle: AT< error: java.lang.Exception: Fail for slotId=0 token=1794832071974 atCmd=AT+EIWLCFGSET="ipol_ims_md_supporting_rat","65"
+18277:11-16 20:27:54.300592 15150 15692 I EmToggle: AT> AT+TASARCRL=0
+18282:11-16 20:27:54.301700  1957  3725 V MtkPhoneIntfMgrEx: sendAtCmd slotId=0 token=1794832074300 atCmd=AT+TASARCRL=0
+18336:11-16 20:27:54.310756  1957  1957 I MtkPhoneIntfMgrEx: EVENT_SEND_AT_CMD_DONE:slotId=0 token=1794832074300 atCmd=AT+TASARCRL=0
+18543:11-16 20:27:54.321106 15150 15150 I EmToggle: AT< error: java.lang.Exception: Fail for slotId=0 token=1794832074300 atCmd=AT+TASARCRL=0
+19833:11-16 20:27:56.526298 15150 15694 I EmToggle: AT> AT+TASARCRL=1
+19837:11-16 20:27:56.526881  1957  2150 V MtkPhoneIntfMgrEx: sendAtCmd slotId=0 token=1794832076526 atCmd=AT+TASARCRL=1
+19945:11-16 20:27:56.538543  1957  1957 I MtkPhoneIntfMgrEx: EVENT_SEND_AT_CMD_DONE:slotId=0 token=1794832076526 atCmd=AT+TASARCRL=1
+20100:11-16 20:27:56.546777 15150 15150 I EmToggle: AT< error: java.lang.Exception: Fail for slotId=0 token=1794832076526 atCmd=AT+TASARCRL=1
+21573:11-16 20:28:00.038096 15150 15720 I EmToggle: AT> AT+EIWLCFGSET="ipol_ims_md_supporting_rat","0"
+21845:11-16 20:28:00.064685 15150 15150 I EmToggle: AT< error: java.lang.Exception: Fail for slotId=0 token=1794832080038 atCmd=AT+EIWLCFGSET="ipol_ims_md_supporting_rat","0"
+22955:11-16 20:28:04.373442 15150 15725 I EmToggle: AT> AT+TASARCRL=0
+22961:11-16 20:28:04.374884  1957  3725 V MtkPhoneIntfMgrEx: sendAtCmd slotId=0 token=1794832084373 atCmd=AT+TASARCRL=0
+23095:11-16 20:28:04.383064  1957  1957 I MtkPhoneIntfMgrEx: EVENT_SEND_AT_CMD_DONE:slotId=0 token=1794832084373 atCmd=AT+TASARCRL=0
+23230:11-16 20:28:04.392811 15150 15150 I EmToggle: AT< error: java.lang.Exception: Fail for slotId=0 token=1794832084373 atCmd=AT+TASARCRL=0
+30495:11-16 20:28:17.687794 15150 15922 I EmToggle: AT> AT+EIWLCFGSET="ipol_ims_md_supporting_rat","0"
+30680:11-16 20:28:17.702475 15150 15150 I EmToggle: AT< error: java.lang.Exception: Fail for slotId=0 token=1794832097688 atCmd=AT+EIWLCFGSET="ipol_ims_md_supporting_rat","0"

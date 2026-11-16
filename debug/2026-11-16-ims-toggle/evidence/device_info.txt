@@ -1,0 +1,5 @@
+项目/型号: MLD-NX3 (Claro 项目), device=HNMLD-M1
+Build: MLD-NX3-Claro-16-261110V94
+Modem: MOLY.NR17.R2.MP2.RC.MP.V45.10.P5 (两 slot 相同)
+SIM1: 中国电信 NR SA (PLMN 46011), phoneId=0, subId=3
+测试时间: 2026-11-16

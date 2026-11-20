@@ -3,13 +3,13 @@
 # 用法（在仓库内任意位置执行）：
 #   ./scripts/install-github-sync-hook.sh
 # 可用环境变量覆盖：
-#   GITHUB_OWNER=qing-001 GITHUB_REPO=tl SYNC_REMOTE=github SYNC_BRANCH=master
-#   GITHUB_REMOTE_URL=git@github.com:qing-001/tl.git   # 完整覆盖远程地址
+#   GITHUB_OWNER=qing-0001 GITHUB_REPO=tl SYNC_REMOTE=origin SYNC_BRANCH=master
+#   GITHUB_REMOTE_URL=git@github.com:qing-0001/tl.git   # 完整覆盖远程地址
 set -euo pipefail
 
-OWNER="${GITHUB_OWNER:-qing-001}"
+OWNER="${GITHUB_OWNER:-qing-0001}"
 REPO="${GITHUB_REPO:-tl}"
-REMOTE="${SYNC_REMOTE:-github}"
+REMOTE="${SYNC_REMOTE:-origin}"
 BRANCH="${SYNC_BRANCH:-master}"
 URL="${GITHUB_REMOTE_URL:-git@github.com:$OWNER/$REPO.git}"
 
@@ -44,10 +44,10 @@ fi
 cat > "$hook" <<'HOOK'
 #!/bin/sh
 # 由 scripts/install-github-sync-hook.sh 安装，提交后自动同步到镜像远程。
-# 配置：git config sync.remote / sync.branch（默认 github / master）
+# 配置：git config sync.remote / sync.branch（默认 origin / master）
 
 gitdir=$(git rev-parse --git-dir 2>/dev/null) || exit 0
-remote=$(git config --get sync.remote 2>/dev/null) || remote=github
+remote=$(git config --get sync.remote 2>/dev/null) || remote=origin
 branch=$(git config --get sync.branch 2>/dev/null) || branch=master
 [ "$(git symbolic-ref --short -q HEAD)" = "$branch" ] || exit 0
 git remote get-url "$remote" >/dev/null 2>&1 || exit 0
@@ -56,7 +56,7 @@ git remote get-url "$remote" >/dev/null 2>&1 || exit 0
   exec 9>"$gitdir/github-sync.lock"
   flock -n 9 || exit 0
   echo "[$(date '+%F %T')] push $(git rev-parse --short HEAD)"
-  GIT_TERMINAL_PROMPT=0 git push --quiet "$remote" "$branch"
+  GIT_TERMINAL_PROMPT=0 timeout 60 git push --quiet "$remote" "$branch"
   rc=$?
   echo "[$(date '+%F %T')] push exit=$rc"
 ) >>"$gitdir/github-sync.log" 2>&1 &
@@ -66,8 +66,8 @@ HOOK
 chmod +x "$hook"
 echo "已安装 hook：$hook（同步 $REMOTE/$BRANCH，日志 $gitdir/github-sync.log）"
 
-if ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new -T git@github.com 2>&1 \
-     | grep -q "successfully authenticated"; then
+ssh_out=$(timeout 15 ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new -T git@github.com 2>&1 || true)
+if printf '%s' "$ssh_out" | grep -q "successfully authenticated"; then
   echo "GitHub SSH 认证：OK"
 else
   echo "警告：GitHub SSH 认证失败。请把公钥添加到 https://github.com/settings/keys" >&2

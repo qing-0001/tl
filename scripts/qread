@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# 读取 mq/ 中未读消息（文件名含 UTC 时间戳，按名称排序即按时间排序）
+# 用法: qread [--all] [--peek]
+set -uo pipefail
+LC_ALL=C
+
+all=0
+peek=0
+for a in "$@"; do
+  case "$a" in
+    --all) all=1 ;;
+    --peek) peek=1 ;;
+    -h|--help) echo "用法: qread [--all] [--peek]"; exit 0 ;;
+    *) echo "未知参数: $a" >&2; exit 2 ;;
+  esac
+done
+
+top=$(git rev-parse --show-toplevel 2>/dev/null) || { echo "请在 Git 仓库内运行" >&2; exit 1; }
+cd "$top"
+gitdir=$(git rev-parse --absolute-git-dir)
+
+agent=$(git config --get sync.agent 2>/dev/null || true); [ -n "$agent" ] || agent=$(hostname -s)
+state="$gitdir/mq-read-$agent.last"
+
+last=""
+if [ "$all" -eq 0 ] && [ -f "$state" ]; then last=$(cat "$state"); fi
+
+if [ ! -d mq ]; then
+  echo "暂无消息（mq/ 不存在）"
+  exit 0
+fi
+
+count=0
+newest="$last"
+
+while IFS= read -r f; do
+  b=$(basename "$f")
+  if [ -n "$last" ] && [[ ! "$b" > "$last" ]]; then
+    continue
+  fi
+  echo "===== $b ====="
+  cat "$f"
+  echo
+  count=$((count + 1))
+  newest="$b"
+done < <(find mq -maxdepth 1 -type f -name '*.md' | sort)
+
+if [ "$count" -eq 0 ]; then
+  echo "没有新消息。"
+  exit 0
+fi
+
+echo "共 $count 条新消息。"
+if [ "$peek" -eq 0 ] && [ -n "$newest" ]; then
+  printf '%s\n' "$newest" >"$state"
+fi

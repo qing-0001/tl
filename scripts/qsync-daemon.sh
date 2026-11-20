@@ -22,7 +22,13 @@ case "$cmd" in
     ;;
   stop)
     if running; then
-      kill "$(cat "$pidfile")"
+      pid=$(cat "$pidfile")
+      kill "$pid" 2>/dev/null
+      for _ in $(seq 1 25); do
+        kill -0 "$pid" 2>/dev/null || break
+        sleep 0.2
+      done
+      kill -0 "$pid" 2>/dev/null && kill -9 "$pid" 2>/dev/null
       rm -f "$pidfile"
       echo "已停止"
     else
@@ -35,7 +41,9 @@ case "$cmd" in
     ;;
   run)
     echo $$ >"$pidfile"
-    trap 'rm -f "$pidfile"' EXIT INT TERM
+    cleanup() { rm -f "$pidfile"; }
+    trap cleanup EXIT
+    trap 'exit 0' INT TERM
     echo "[$(date '+%F %T')] daemon start pid $$ interval ${interval}s"
     while :; do
       "$self_dir/qsync.sh" || true
